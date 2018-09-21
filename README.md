@@ -21,3 +21,22 @@ slm.py is a [python script](https://github.com/bousqi/slm-patcher) based on [dey
 2. Download the desired patched executable from the "patched_executables" folder.
 3. Copy the downloaded file into your own Sublime Merge directory.
 4. Run the executable file.
+
+<br>
+
+# Manual Patching
+## Build 1055
+### Windows 64-bit
+| Name                     |  Offset  | Original | Patched |
+| ------------------------ | -------- | -------- | ------- |
+| Persistent License Check | 0x2774D  | 0x00     | 0x01    |
+| Initial License Check    | 0x2184E  | 0x38     | 0x08    |
+|                          | 0x2184F  | 0x00     | 0x01    |
+### Linux 64-bit
+| Name                     |  Offset  | Original | Patched |
+| ------------------------ | -------- | -------- | ------- |
+| Persistent License Check | 0x28F66F | 0x00     | 0x01    |
+| Initial License Check    | 0x28CE13 | 0x38     | 0x08    |
+|                          | 0x28CE14 | 0x00     | 0x01    |
+
+<br>
