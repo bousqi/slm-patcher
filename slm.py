@@ -10,11 +10,11 @@ class Patcher:
     MADE BY: DE YI <https://github.com/deyixtan>
     '''
     INITIAL_LICENSE_CHECK_AOB = {"windows": b"80380074..488b..........48....74..........488d..........66........488d..........66........66......488d....66......4889",
-                                 "linux": b"80380074..498b..........48........48....74..........48",
+                                 "linux": b"80380074..488b..........48........48....74..........488b..............488d..........488d....................4885",
                                  "patch": b"800801"}
-    PERSISTENT_LICENSE_CHECK_AOB = {"windows": b"c60100c3cc555648",
-                                    "linux": b"00c390488b07488b38e9aba0030090415653504989f6",
-                                    "patch": b"c60101"}
+    PERSISTENT_LICENSE_CHECK_AOB = {"windows": b"00c3cc555648",
+                                    "linux": b"00c390488b3f8b7720",
+                                    "patch": b"01"}
 
     def __init__(self, file_path):
         self.file_path = file_path

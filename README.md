@@ -7,7 +7,7 @@ slm.py is a [python script](https://github.com/bousqi/slm-patcher) based on [dey
 |         Builds Supported         | Operating System |
 | -------------------------------- | ---------------- |
 | 1055 onwards                     | Windows 64-bit   |
-| coming soon...                   | Linux 64-bit     |
+| 1055 onwards                     | Linux 64-bit     |
 
 ## USAGE
 
