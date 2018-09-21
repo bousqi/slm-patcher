@@ -9,14 +9,12 @@ class Patcher:
     CAN BE PATCHED ON ALL WINDOWS BUILDS >1055 & LINUX BUILD 1055 (INCLUDES BOTH STABLE AND DEV)
     MADE BY: DE YI <https://github.com/deyixtan>
     '''
-    INITIAL_LICENSE_CHECK_AOB = {"windows": b"80380074..488b..........48....74..........488d..........",
+    INITIAL_LICENSE_CHECK_AOB = {"windows": b"80380074..488b..........48....74..........488d..........66........488d..........66........66......488d....66......4889",
                                  "linux": b"80380074..498b..........48........48....74..........48",
                                  "patch": b"800801"}
-    PERSISTENT_LICENSE_CHECK_AOB = {"windows": b"C60100C3CC555648",
+    PERSISTENT_LICENSE_CHECK_AOB = {"windows": b"c60100c3cc555648",
                                     "linux": b"00c390488b07488b38e9aba0030090415653504989f6",
-                                    "patch": b"C60101"}
-
-
+                                    "patch": b"c60101"}
 
     def __init__(self, file_path):
         self.file_path = file_path
@@ -42,19 +40,32 @@ class Patcher:
 
     def __get_file_os_target(self):
         if self.hex_dump.startswith(b"4d5a"):
+            print(" >> Windows version")
             return "windows"
         elif self.hex_dump.startswith(b"7f454c4602"):
+            print(" >> Linux version")
             return "linux"
         else:
+            print(" >> Unknown version")
             return None
 
     def __index_is_valid(self, check_aob):
-        return len(re.findall(check_aob, self.hex_dump)) == 1
+        patterns = re.findall(check_aob, self.hex_dump)
+        pat_len = len(patterns)
+        print(" >> found " + str(pat_len) + " occurences (1 expected)")
+
+        for p in patterns:
+            check_index = self.hex_dump.index(p)
+            print(" >> found @" + hex(int(check_index/2)))
+
+        return pat_len == 1
 
     def __is_initial_license_check_index_valid(self, os):
+        print(" >> looking for INITIAL_LICENSE_CHECK_AOB")
         return self.__index_is_valid(Patcher.INITIAL_LICENSE_CHECK_AOB[os])
 
     def __is_persistent_license_check_index_valid(self, os):
+        print(" >> looking for PERSISTENT_LICENSE_CHECK_AOB")
         return self.__index_is_valid(Patcher.PERSISTENT_LICENSE_CHECK_AOB[os])
 
     def __patch_check(self, check_aob, patch_aob):
@@ -75,6 +86,8 @@ def main():
     parser = argparse.ArgumentParser(description="Patch Sublime Merge")
     parser.add_argument("file_path", help="file path to sublime merge executable.")
     args = parser.parse_args()
+
+    print("Patcher >> Starting job...")
 
     # check for valid file path
     if (os.path.isfile(args.file_path)):
