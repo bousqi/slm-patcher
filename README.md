@@ -13,7 +13,7 @@ slm.py is a [python script](https://github.com/bousqi/slm-patcher) based on [dey
 
 > python slm.py <"sublime merge executable file path">
 
-## MANUAL PATCHING
+## PATCHING
 
 ### Replacing Executable
 
@@ -24,7 +24,7 @@ slm.py is a [python script](https://github.com/bousqi/slm-patcher) based on [dey
 
 <br>
 
-# Manual Patching
+# Manual Patching (Hex Editor)
 ## Build 1055
 ### Windows 64-bit
 | Name                     |  Offset  | Original | Patched |
@@ -38,5 +38,17 @@ slm.py is a [python script](https://github.com/bousqi/slm-patcher) based on [dey
 | Persistent License Check | 0x28F66F | 0x00     | 0x01    |
 | Initial License Check    | 0x28CE13 | 0x38     | 0x08    |
 |                          | 0x28CE14 | 0x00     | 0x01    |
-
+## Build 1058
+### Windows 64-bit
+| Name                     |  Offset  | Original | Patched |
+| ------------------------ | -------- | -------- | ------- |
+| Persistent License Check | 0x2774D  | 0x00     | 0x01    |
+| Initial License Check    | 0x21852  | 0x38     | 0x08    |
+|                          | 0x21853  | 0x00     | 0x01    |
+### Linux 64-bit
+| Name                     |  Offset  | Original | Patched |
+| ------------------------ | -------- | -------- | ------- |
+| Persistent License Check | 0x28F65B | 0x00     | 0x01    |
+| Initial License Check    | 0x28CE03 | 0x38     | 0x08    |
+|                          | 0x28CE04 | 0x00     | 0x01    |
 <br>
