@@ -6,8 +6,8 @@ slm.py is a [python script](https://github.com/bousqi/slm-patcher) based on [dey
 
 |         Builds Supported         | Operating System |
 | -------------------------------- | ---------------- |
-| 1055 onwards                     | Windows 64-bit   |
-| 1055 onwards                     | Linux 64-bit     |
+| 1055 onwards (up to 1061)        | Windows 64-bit   |
+| 1055 onwards (up to 1061)        | Linux 64-bit     |
 
 ## USAGE
 
@@ -51,4 +51,13 @@ slm.py is a [python script](https://github.com/bousqi/slm-patcher) based on [dey
 | Persistent License Check | 0x28F65B | 0x00     | 0x01    |
 | Initial License Check    | 0x28CE03 | 0x38     | 0x08    |
 |                          | 0x28CE04 | 0x00     | 0x01    |
+## Build 1061
+### Windows 64-bit
+| Name                     |  Offset  | Original | Patched |
+| ------------------------ | -------- | -------- | ------- |
+| Persistent License Check | 0x27735  | 0x00     | 0x01    |
+| Initial License Check    | 0x2183C  | 0x38     | 0x08    |
+|                          | 0x2183D  | 0x00     | 0x01    |
+### Linux 64-bit
+TO BE FILLED
 <br>
