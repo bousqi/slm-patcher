@@ -108,7 +108,7 @@ def main():
         result = patcher.patch_file()
 
         if result:
-            print("Patcher >> Successfully patched '{args.file_path}'.")
+            print("Patcher >> Successfully patched '" + args.file_path + "'.")
         else:
             print("Patcher >> Could not work on input file.")
     else:

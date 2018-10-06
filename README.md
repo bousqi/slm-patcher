@@ -6,11 +6,10 @@ slm.py is a [python script](https://github.com/bousqi/slm-patcher) based on [dey
 
 |         Builds Supported         | Operating System |
 | -------------------------------- | ---------------- |
-| 1055 onwards (up to 1065)        | Windows 64-bit   |
-| 1055 onwards (up to 1061)        | Linux 64-bit     |
+| 1055 onwards (up to 1070)        | Windows 64-bit   |
+| 1055 onwards (up to 1070)        | Linux 64-bit     |
 
-It appears that dark theme can load but get removed upon next launch. **Crack must be partial.**
-To be investiguated... (If I can find some spare time for that task)
+Thanks to @tostercx that pointed out the problem and offered a solution for dark theme.
 
 ## USAGE
 
@@ -28,6 +27,21 @@ To be investiguated... (If I can find some spare time for that task)
 <br>
 
 # Manual Patching (Hex Editor)
+## Build 1070
+### Windows 64-bit
+| Name                     |  Offset  | Original | Patched |
+| ------------------------ | -------- | -------- | ------- |
+| Initial License Check    | 0x2262E  | 0x38     | 0x08    |
+|                          | 0x2262F  | 0x00     | 0x01    |
+| Persistent License Check | 0x2852D  | 0x00     | 0x01    |
+| Theme Check              | 0x21911  | 0x00     | 0x01    |
+### Linux 64-bit
+| Name                     |  Offset  | Original | Patched |
+| ------------------------ | -------- | -------- | ------- |
+| Initial License Check    | 0x296A6B | 0x38     | 0x08    |
+|                          | 0x296A6C | 0x00     | 0x01    |
+| Persistent License Check | 0x2992C7 | 0x00     | 0x01    |
+| Theme Check              | 0x295CEA | 0x00     | 0x01    |
 ## Build 1065
 ### Windows 64-bit
 | Name                     |  Offset  | Original | Patched |
