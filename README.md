@@ -6,8 +6,11 @@ slm.py is a [python script](https://github.com/bousqi/slm-patcher) based on [dey
 
 |         Builds Supported         | Operating System |
 | -------------------------------- | ---------------- |
-| 1055 onwards (up to 1061)        | Windows 64-bit   |
+| 1055 onwards (up to 1065)        | Windows 64-bit   |
 | 1055 onwards (up to 1061)        | Linux 64-bit     |
+
+It appears that dark theme can load but get removed upon next launch. **Crack must be partial.**
+To be investiguated... (If I can find some spare time for that task)
 
 ## USAGE
 
@@ -25,19 +28,24 @@ slm.py is a [python script](https://github.com/bousqi/slm-patcher) based on [dey
 <br>
 
 # Manual Patching (Hex Editor)
-## Build 1055
+## Build 1065
 ### Windows 64-bit
 | Name                     |  Offset  | Original | Patched |
 | ------------------------ | -------- | -------- | ------- |
-| Persistent License Check | 0x2774D  | 0x00     | 0x01    |
-| Initial License Check    | 0x2184E  | 0x38     | 0x08    |
-|                          | 0x2184F  | 0x00     | 0x01    |
+| Persistent License Check | 0x2780D  | 0x00     | 0x01    |
+| Initial License Check    | 0x21914  | 0x38     | 0x08    |
+|                          | 0x21915  | 0x00     | 0x01    |
 ### Linux 64-bit
+TO BE FILLED
+## Build 1061
+### Windows 64-bit
 | Name                     |  Offset  | Original | Patched |
 | ------------------------ | -------- | -------- | ------- |
-| Persistent License Check | 0x28F66F | 0x00     | 0x01    |
-| Initial License Check    | 0x28CE13 | 0x38     | 0x08    |
-|                          | 0x28CE14 | 0x00     | 0x01    |
+| Persistent License Check | 0x27735  | 0x00     | 0x01    |
+| Initial License Check    | 0x2183C  | 0x38     | 0x08    |
+|                          | 0x2183D  | 0x00     | 0x01    |
+### Linux 64-bit
+TO BE FILLED
 ## Build 1058
 ### Windows 64-bit
 | Name                     |  Offset  | Original | Patched |
@@ -51,13 +59,17 @@ slm.py is a [python script](https://github.com/bousqi/slm-patcher) based on [dey
 | Persistent License Check | 0x28F65B | 0x00     | 0x01    |
 | Initial License Check    | 0x28CE03 | 0x38     | 0x08    |
 |                          | 0x28CE04 | 0x00     | 0x01    |
-## Build 1061
+## Build 1055
 ### Windows 64-bit
 | Name                     |  Offset  | Original | Patched |
 | ------------------------ | -------- | -------- | ------- |
-| Persistent License Check | 0x27735  | 0x00     | 0x01    |
-| Initial License Check    | 0x2183C  | 0x38     | 0x08    |
-|                          | 0x2183D  | 0x00     | 0x01    |
+| Persistent License Check | 0x2774D  | 0x00     | 0x01    |
+| Initial License Check    | 0x2184E  | 0x38     | 0x08    |
+|                          | 0x2184F  | 0x00     | 0x01    |
 ### Linux 64-bit
-TO BE FILLED
+| Name                     |  Offset  | Original | Patched |
+| ------------------------ | -------- | -------- | ------- |
+| Persistent License Check | 0x28F66F | 0x00     | 0x01    |
+| Initial License Check    | 0x28CE13 | 0x38     | 0x08    |
+|                          | 0x28CE14 | 0x00     | 0x01    |
 <br>
