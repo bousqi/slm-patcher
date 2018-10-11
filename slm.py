@@ -15,6 +15,9 @@ class Patcher:
     PERSISTENT_LICENSE_CHECK_AOB = {"windows": b"00c3cc55564883ec48",
                                     "linux":   b"00c390488b3f8b7720",
                                     "patch":   b"01"}
+    THEME_CHECK_AOB = {"windows": b"0000c705......0000000000b80f0000006648",
+                       "linux":   b"0000c7460400000000488d461848",
+                       "patch":   b"01"}
 
     def __init__(self, file_path):
         self.file_path = file_path
@@ -25,10 +28,11 @@ class Patcher:
 
     def patch_file(self):
         os_target = self.__get_file_os_target()
-        if os_target != None and self.__is_initial_license_check_index_valid(os_target) and self.__is_persistent_license_check_index_valid(os_target):
+        if os_target != None and self.__is_initial_license_check_index_valid(os_target) and self.__is_persistent_license_check_index_valid(os_target) and self.__is_theme_check_index_valid(os_target):
             # bypass & patch file with changes
             self.__patch_initial_license_check(os_target)
             self.__patch_persistent_license_check(os_target)
+            self.__patch_theme_check(os_target)
 
             try:
                 with open(self.file_path, "wb") as file:
@@ -68,6 +72,10 @@ class Patcher:
         print(" >> looking for PERSISTENT_LICENSE_CHECK_AOB")
         return self.__index_is_valid(Patcher.PERSISTENT_LICENSE_CHECK_AOB[os])
 
+    def __is_theme_check_index_valid(self, os):
+        print(" >> looking for THEME_CHECK_AOB")
+        return self.__index_is_valid(Patcher.THEME_CHECK_AOB[os])
+
     def __patch_check(self, check_aob, patch_aob):
         # bypass checks
         check_index = self.hex_dump.index(re.findall(check_aob, self.hex_dump)[0])
@@ -80,6 +88,10 @@ class Patcher:
     def __patch_persistent_license_check(self, os):
         # bypass license
         self.__patch_check(Patcher.PERSISTENT_LICENSE_CHECK_AOB[os], Patcher.PERSISTENT_LICENSE_CHECK_AOB["patch"])
+
+    def __patch_theme_check(self, os):
+        # bypass theme
+        self.__patch_check(Patcher.THEME_CHECK_AOB[os], Patcher.THEME_CHECK_AOB["patch"])
 
 # script logic
 def main():
